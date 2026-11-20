@@ -1,25 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
-<link rel="stylesheet" href="style.css">
+<title>Leonida Legend — GTA VI Trophy Guide &amp; Tracker</title>
+<meta name="description" content="The complete offline guide and tracker for all 55 Grand Theft Auto VI trophies on PlayStation 5: official names, descriptions and grades, own-words guides with cited sources, a platinum roadmap, missable flags, and a checklist that saves your progress.">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; 55 trophies</p>
+    <h1>Leonida Legend</h1>
+    <p class="tagline">Every trophy, guided and tracked — offline, in one page.</p>
+    <div class="progress-wrap" role="status" aria-label="Trophy progress">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <p class="progress-text"><strong id="progressText">0 / 55 earned</strong> <span id="gradeCounts"></span></p>
+    </div>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
-<script type="module" src="app.js"></script>
+
+<nav class="views" aria-label="Views">
+  <button class="view-tab is-active" data-view="checklist" type="button">Checklist</button>
+  <button class="view-tab" data-view="roadmap" type="button">Platinum roadmap</button>
+  <button class="view-tab" data-view="missable" type="button">Missables</button>
+</nav>
+
+<section class="controls" aria-label="Tracker controls">
+  <div class="controls-row">
+    <label class="search-label" for="search">Search trophies</label>
+    <input id="search" type="search" placeholder="Name, description or guide…" autocomplete="off">
+    <label class="grade-label" for="gradeFilter">Grade</label>
+    <select id="gradeFilter">
+      <option value="all">All grades</option>
+      <option value="platinum">Platinum</option>
+      <option value="gold">Gold</option>
+      <option value="silver">Silver</option>
+      <option value="bronze">Bronze</option>
+    </select>
+  </div>
+  <div class="chips" role="group" aria-label="Filter by kind">
+    <button class="chip is-active" data-filter="all" type="button">All 55</button>
+    <button class="chip" data-filter="story" type="button">Story</button>
+    <button class="chip" data-filter="missable" type="button">Missable</button>
+    <button class="chip" data-filter="collectibles" type="button">Collectibles</button>
+    <button class="chip" data-filter="activities" type="button">Activities</button>
+    <button class="chip" data-filter="online" type="button">Online</button>
+    <button class="chip" data-filter="earned" type="button">Earned</button>
+    <button class="chip" data-filter="remaining" type="button">To earn</button>
+  </div>
+  <div class="controls-row tools-row">
+    <label class="spoiler-toggle">
+      <input id="spoilerToggle" type="checkbox" checked>
+      <span>Hide story spoilers until earned</span>
+    </label>
+    <span class="tool-buttons">
+      <button id="exportBtn" type="button">Export progress</button>
+      <button id="importBtn" type="button">Import progress</button>
+      <input id="importFile" type="file" accept="application/json,.json" hidden>
+    </span>
+  </div>
+</section>
+
+<main>
+  <section id="checklistView" class="view is-active" aria-label="Trophy checklist">
+    <p class="list-count" id="listCount"></p>
+    <noscript><p class="empty-state">This guide needs JavaScript: the checklist, the saved progress and the filters all run in your browser, offline. Please enable JavaScript and reload.</p></noscript>
+    <ul class="trophy-list" id="trophyList"></ul>
+    <p class="empty-state" id="emptyState" hidden></p>
+  </section>
+
+  <section id="roadmapView" class="view" aria-label="Platinum roadmap">
+    <h2>The road to the platinum</h2>
+    <p class="roadmap-intro">About 200 hours, one playthrough, no online trophies. PowerPyx rates the set 4 out of 10 in difficulty — the work is the 100% checklist, not the skill. Cheats disable trophies and saving, so keep them off until the platinum pops.</p>
+    <div class="stages" id="roadmapStages"></div>
+    <p class="roadmap-note">Sources: PowerPyx trophy guide &amp; roadmap, HowToVideoGame trophy list, GTA Zone trophy list. Stage times are PowerPyx estimates.</p>
+  </section>
+
+  <section id="missableView" class="view" aria-label="Missable trophies">
+    <h2>Missables — the one that matters</h2>
+    <div class="missable-hero" id="missableHero"></div>
+    <h3>Everything else cannot be missed</h3>
+    <p>Story trophies unlock on their own. After the credits, free-roam stays open and the 100% checklist opens under Progress, Stats, 100% Completion — nothing on it is missable, and everything is doable after the story. Optional missions do disappear over time, but there are far more than 100 of them, so losing a few costs nothing. The only thing to do on time is the Chapter 1 meditation above.</p>
+    <p class="source-line">Sources: PowerPyx trophy guide &amp; roadmap; GTA Zone trophy list.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Names, descriptions and grades are PlayStation's, as published. Guides are written in the guide's own words, with the source named beside each one — a source is cited, never copied. Counts (42 Shooting Range challenges, 14 drone race locations, 18 meditation spots, 52 areas, 9 gangs) come from the official list.</p>
+  <p>Works fully offline: every file this page loads lives in its own folder, and your progress never leaves your browser.</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="app.js"></script>
 </body>
 </html>
